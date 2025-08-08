@@ -8,6 +8,7 @@ type InitialState = {
 type CartItem = {
   id: number;
   title: string;
+  description: string;
   price: number;
   discountedPrice: number;
   quantity: number;
@@ -26,7 +27,7 @@ export const cart = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, action: PayloadAction<CartItem>) => {
-      const { id, title, price, quantity, discountedPrice, imgs } =
+      const { id, title,description, price, quantity, discountedPrice, imgs } =
         action.payload;
       const existingItem = state.items.find((item) => item.id === id);
 
@@ -36,6 +37,7 @@ export const cart = createSlice({
         state.items.push({
           id,
           title,
+          description,
           price,
           quantity,
           discountedPrice,
