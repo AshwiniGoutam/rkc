@@ -11,8 +11,9 @@ const Footer = () => {
         <div className="flex flex-wrap xl:flex-nowrap gap-10 xl:gap-19 xl:justify-between pt-17.5 xl:pt-22.5 pb-10 xl:pb-15">
           <div className="max-w-[330px] w-full sm:w-auto">
             <h1 style={{ fontSize: '40px', fontWeight: '700', color: '#000' }} >RKC</h1>
-            <p className="mt-5">One-stop destination for stylish and comfortable ladies’ kurtis. Whether you're dressing for work, a casual outing, or a festive event, our curated collection features beautifully designed kurtis crafted from premium fabrics like cotton, rayon, and georgette.</p>
+            <p className="mt-5">One-stop destination for stylish and comfortable ladies’ kurtis. Whether  dressing for work, a casual outing, or a festive event, our curated collection features beautifully designed kurtis crafted from premium fabrics like cotton, rayon, and georgette.</p>
           </div>
+          
 
           <div className="w-full sm:w-auto">
             <h2 className="mb-7.5 text-custom-1 font-medium text-dark">
