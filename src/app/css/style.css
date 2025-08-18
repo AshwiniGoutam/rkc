@@ -32,6 +32,14 @@
   }
 }
 
+button.swal2-confirm.swal2-styled{
+  background-color: #d33 !important;
+}
+
+.swal2-cancel.swal2-styled{
+  background-color: #3085d6 !important;
+}
+
 /* third-party libraries CSS */
 
 /* clears the ‘X’ from Internet Explorer */
