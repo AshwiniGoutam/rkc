@@ -10,7 +10,13 @@ const Footer = () => {
         {/* <!-- footer menu start --> */}
         <div className="flex flex-wrap xl:flex-nowrap gap-10 xl:gap-19 xl:justify-between pt-17.5 xl:pt-22.5 pb-10 xl:pb-15">
           <div className="max-w-[330px] w-full sm:w-auto">
-            <h1 style={{ fontSize: '40px', fontWeight: '700', color: '#000' }} >RKC</h1>
+            <Image
+                            src="/images/logo/new-logo.jpeg"
+                            alt="Logo"
+                            width={219}
+                            height={36}
+                          />
+            {/* <h1 style={{ fontSize: '40px', fontWeight: '700', color: '#000' }} >RKC</h1> */}
             <p className="mt-5">One-stop destination for stylish and comfortable ladies’ kurtis. Whether  dressing for work, a casual outing, or a festive event, our curated collection features beautifully designed kurtis crafted from premium fabrics like cotton, rayon, and georgette.</p>
           </div>
           
@@ -106,11 +112,11 @@ const Footer = () => {
                     />
                   </svg>
                 </span>
-                685 Market Street,Las Vegas, LA 95820,United States.
+                G2 , Parth sarthi apartment, 149 Rajendra path, 21 South, Niwaru road Jhotwara Jaipur Rajasthan 302012
               </li>
 
               <li>
-                <a href="#" className="flex items-center gap-4.5">
+                <a href="tel:+91 90248 31336" className="flex items-center gap-4.5">
                   <svg
                     width="24"
                     height="24"
@@ -135,12 +141,12 @@ const Footer = () => {
                       fill="#3C50E0"
                     />
                   </svg>
-                  (+099) 532-786-9843
+                  +91 90248 31336
                 </a>
               </li>
 
               <li>
-                <a href="#" className="flex items-center gap-4.5">
+                <a href="mailto:lokeshuppdhayay0@gmail.com" className="flex items-center gap-4.5">
                   <svg
                     width="24"
                     height="24"
@@ -155,7 +161,7 @@ const Footer = () => {
                       fill="#3C50E0"
                     />
                   </svg>
-                  support@example.com
+                  lokeshuppdhayay0@gmail.com
                 </a>
               </li>
             </ul>
