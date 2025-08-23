@@ -1,7 +1,7 @@
 import { Product } from "@/types/product";
 const shopData: Product[] = [
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -19,7 +19,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -37,7 +37,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -55,7 +55,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -73,7 +73,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -91,7 +91,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -109,7 +109,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -127,7 +127,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -145,7 +145,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
@@ -163,7 +163,7 @@ const shopData: Product[] = [
     },
   },
   {
-    title: "Cotton_60_60",
+    name: "Cotton_60_60",
     description:'Cotset, Size_M_to_XXL, Full interlock, Pent pocket',
     reviews: 15,
     price: 525,
