@@ -29,15 +29,15 @@ const SingleItem = ({ item }: { item: Product }) => {
     );
   };
 
-  const handleItemToWishList = () => {
-    dispatch(
-      addItemToWishlist({
-        ...item,
-        status: "available",
-        quantity: 1,
-      })
-    );
-  };
+  // const handleItemToWishList = () => {
+  //   dispatch(
+  //     addItemToWishlist({
+  //       ...item,
+  //       status: "available",
+  //       quantity: 1,
+  //     })
+  //   );
+  // };
 
   return (
     <div className="group">
@@ -162,7 +162,7 @@ const SingleItem = ({ item }: { item: Product }) => {
             </svg>
           </button>
 
-          <button
+          {/* <button
             onClick={() => {
               handleItemToWishList();
             }}
@@ -185,7 +185,7 @@ const SingleItem = ({ item }: { item: Product }) => {
                 fill=""
               />
             </svg>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
