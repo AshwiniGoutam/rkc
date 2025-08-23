@@ -176,8 +176,8 @@ const ProductItem = ({ item }: { item: Product }) => {
 
       <span className="flex items-center gap-2 font-medium text-lg">
         <span className="text-dark">₹{item.price}</span>
-        <span className="text-dark-1">20% Off</span>
         <span className="text-dark-4 line-through">₹{item.mrp || "650"}</span>
+        <span className="text-blue">20% Off</span>
       </span>
     </div>
   );
