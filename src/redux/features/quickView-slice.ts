@@ -8,7 +8,7 @@ type InitialState = {
 const initialState = {
   value: {
     title: "",
-  description: "",
+    description: "",
     reviews: 0,
     price: 0,
     discountedPrice: 0,
@@ -16,7 +16,7 @@ const initialState = {
     id: 0,
     images: [],
     imgs: { thumbnails: [], previews: [] },
-  } as Product,
+  } as unknown as Product,
 } as InitialState;
 
 export const quickView = createSlice({
