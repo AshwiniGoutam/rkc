@@ -326,7 +326,7 @@ const Header = () => {
                 </ul>
               </nav>
             </div>
-            <div className="hidden xl:block">
+            <div className="hidden">
               <ul className="flex items-center gap-5.5">
                 <li className="py-4">
                   <a

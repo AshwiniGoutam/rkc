@@ -96,7 +96,10 @@ const ProductItem = ({ item }: { item: Product }) => {
           </button>
 
           <button
-            onClick={() => handleAddToCart()}
+             onClick={() => {
+              openModal();
+              handleQuickViewUpdate();
+            }}
             className="inline-flex font-medium text-custom-sm py-[7px] px-5 rounded-[5px] bg-blue text-white ease-out duration-200 hover:bg-blue-dark"
           >
             Add to cart
@@ -172,8 +175,9 @@ const ProductItem = ({ item }: { item: Product }) => {
       </h3>
 
       <span className="flex items-center gap-2 font-medium text-lg">
-        <span className="text-dark">${item.price}</span>
-        <span className="text-dark-4 line-through">${item.mrp || "650"}</span>
+        <span className="text-dark">₹{item.price}</span>
+        <span className="text-dark-1">20% Off</span>
+        <span className="text-dark-4 line-through">₹{item.mrp || "650"}</span>
       </span>
     </div>
   );

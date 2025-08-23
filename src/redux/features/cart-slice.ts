@@ -13,6 +13,7 @@ type CartItem = {
   mrp: number;
   quantity: number;
   image_url?: string; // 👈 looks like your Product has `image_url: string`, not object
+  size?: string;
 };
 
 const initialState: InitialState = {
@@ -24,7 +25,7 @@ export const cart = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, action: PayloadAction<CartItem>) => {
-      const { _id, name, description, price, quantity, mrp, image_url } =
+      const { _id, name, description, price, quantity, mrp, image_url, size } =
         action.payload;
       const existingItem = state.items.find((item) => item._id === _id);
 
@@ -39,6 +40,7 @@ export const cart = createSlice({
           quantity,
           mrp,
           image_url,
+          size,
         });
       }
     },

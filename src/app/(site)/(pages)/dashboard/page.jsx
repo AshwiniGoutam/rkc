@@ -42,7 +42,7 @@ export default function DashboardPage() {
 
   return (
     <section className="bg-gray mt-50">
-      <div className="max-w-7xl py-10 pb-20 mx-auto px-5 sm:px-80">
+      <div className="max-w-7xl py-10 pb-20 mx-auto px-5 sm:px-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="font-semibold text-2xl text-gray-800 mb-0 p-0">
             Products

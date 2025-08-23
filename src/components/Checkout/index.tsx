@@ -7,25 +7,30 @@ import ShippingMethod from "./ShippingMethod";
 import PaymentMethod from "./PaymentMethod";
 import Coupon from "./Coupon";
 import Billing from "./Billing";
+import { useAppSelector } from "@/redux/store";
+import { selectTotalPrice } from "@/redux/features/cart-slice";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
+  const cartItems = useAppSelector((state) => state.cartReducer.items);
+  const totalPrice = useSelector(selectTotalPrice);
   return (
     <>
       <Breadcrumb title={"Checkout"} pages={["checkout"]} />
-      <section className="overflow-hidden py-20 bg-gray-2">
+      <section className="overflow-hidden py-10 bg-gray-2">
         <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
           <form>
             <div className="flex flex-col lg:flex-row gap-7.5 xl:gap-11">
               {/* <!-- checkout left --> */}
               <div className="lg:max-w-[670px] w-full">
                 {/* <!-- login box --> */}
-                <Login />
+                {/* <Login /> */}
 
                 {/* <!-- billing details --> */}
                 <Billing />
 
                 {/* <!-- address box two --> */}
-                <Shipping />
+                {/* <Shipping /> */}
 
                 {/* <!-- others note box --> */}
                 <div className="bg-white shadow-1 rounded-[10px] p-4 sm:p-8.5 mt-7.5">
@@ -46,9 +51,9 @@ const Checkout = () => {
               </div>
 
               {/* // <!-- checkout right --> */}
-              <div className="max-w-[455px] w-full">
+              <div className="max-w-[455px] w-full mt-14 h-100">
                 {/* <!-- order list box --> */}
-                <div className="bg-white shadow-1 rounded-[10px]">
+                <div className="bg-white shadow-1 rounded-[10px] sticky top-0">
                   <div className="border-b border-gray-3 py-5 px-4 sm:px-8.5">
                     <h3 className="font-medium text-xl text-dark">
                       Your Order
@@ -69,44 +74,25 @@ const Checkout = () => {
                     </div>
 
                     {/* <!-- product item --> */}
-                    <div className="flex items-center justify-between py-5 border-b border-gray-3">
-                      <div>
-                        <p className="text-dark">iPhone 14 Plus , 6/128GB</p>
-                      </div>
-                      <div>
-                        <p className="text-dark text-right">$899.00</p>
-                      </div>
-                    </div>
 
-                    {/* <!-- product item --> */}
-                    <div className="flex items-center justify-between py-5 border-b border-gray-3">
-                      <div>
-                        <p className="text-dark">Asus RT Dual Band Router</p>
-                      </div>
-                      <div>
-                        <p className="text-dark text-right">$129.00</p>
-                      </div>
-                    </div>
-
-                    {/* <!-- product item --> */}
-                    <div className="flex items-center justify-between py-5 border-b border-gray-3">
-                      <div>
-                        <p className="text-dark">Havit HV-G69 USB Gamepad</p>
-                      </div>
-                      <div>
-                        <p className="text-dark text-right">$29.00</p>
-                      </div>
-                    </div>
-
-                    {/* <!-- product item --> */}
-                    <div className="flex items-center justify-between py-5 border-b border-gray-3">
-                      <div>
-                        <p className="text-dark">Shipping Fee</p>
-                      </div>
-                      <div>
-                        <p className="text-dark text-right">$15.00</p>
-                      </div>
-                    </div>
+                    {cartItems &&
+                      cartItems?.map((item, index) => {
+                        return (
+                          <div
+                            className="flex items-center justify-between py-5 border-b border-gray-3"
+                            key={index}
+                          >
+                            <div>
+                              <p className="text-dark">{item?.name}</p>
+                            </div>
+                            <div>
+                              <p className="text-dark text-right">
+                                ₹ {item.price * item.quantity}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
 
                     {/* <!-- total --> */}
                     <div className="flex items-center justify-between pt-5">
@@ -115,7 +101,7 @@ const Checkout = () => {
                       </div>
                       <div>
                         <p className="font-medium text-lg text-dark text-right">
-                          $1072.00
+                          ₹ {totalPrice}
                         </p>
                       </div>
                     </div>
@@ -123,13 +109,13 @@ const Checkout = () => {
                 </div>
 
                 {/* <!-- coupon box --> */}
-                <Coupon />
+                {/* <Coupon /> */}
 
                 {/* <!-- shipping box --> */}
-                <ShippingMethod />
+                {/* <ShippingMethod /> */}
 
                 {/* <!-- payment box --> */}
-                <PaymentMethod />
+                {/* <PaymentMethod /> */}
 
                 {/* <!-- checkout button --> */}
                 <button

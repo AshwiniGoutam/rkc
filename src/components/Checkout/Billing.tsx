@@ -2,7 +2,7 @@ import React from "react";
 
 const Billing = () => {
   return (
-    <div className="mt-9">
+    <div className="mt-0">
       <h2 className="font-medium text-dark text-xl sm:text-2xl mb-5.5">
         Billing details
       </h2>
@@ -11,7 +11,7 @@ const Billing = () => {
         <div className="flex flex-col lg:flex-row gap-5 sm:gap-8 mb-5">
           <div className="w-full">
             <label htmlFor="firstName" className="block mb-2.5">
-              First Name <span className="text-red">*</span>
+             Name <span className="text-red">*</span>
             </label>
 
             <input
@@ -22,23 +22,9 @@ const Billing = () => {
               className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
             />
           </div>
-
-          <div className="w-full">
-            <label htmlFor="lastName" className="block mb-2.5">
-              Last Name <span className="text-red">*</span>
-            </label>
-
-            <input
-              type="text"
-              name="lastName"
-              id="lastName"
-              placeholder="Deo"
-              className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
-            />
-          </div>
         </div>
 
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <label htmlFor="companyName" className="block mb-2.5">
             Company Name
           </label>
@@ -49,9 +35,9 @@ const Billing = () => {
             id="companyName"
             className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
           />
-        </div>
+        </div> */}
 
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <label htmlFor="countryName" className="block mb-2.5">
             Country/ Region
             <span className="text-red">*</span>
@@ -82,7 +68,7 @@ const Billing = () => {
               </svg>
             </span>
           </div>
-        </div>
+        </div> */}
 
         <div className="mb-5">
           <label htmlFor="address" className="block mb-2.5">
@@ -122,7 +108,7 @@ const Billing = () => {
           />
         </div>
 
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <label htmlFor="country" className="block mb-2.5">
             Country
           </label>
@@ -133,7 +119,7 @@ const Billing = () => {
             id="country"
             className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none duration-200 focus:border-transparent focus:shadow-input focus:ring-2 focus:ring-blue/20"
           />
-        </div>
+        </div> */}
 
         <div className="mb-5">
           <label htmlFor="phone" className="block mb-2.5">
