@@ -6,17 +6,15 @@ type InitialState = {
 };
 
 type CartItem = {
-  _id: number;
+  _id: string;   // 👈 change to string
   name: string;
   description: string;
   price: number;
   mrp: number;
   quantity: number;
-  image_url?: {
-    thumbnails: string[];
-    previews: string[];
-  };
+  image_url?: string; // 👈 looks like your Product has `image_url: string`, not object
 };
+
 
 const initialState: InitialState = {
   items: [],

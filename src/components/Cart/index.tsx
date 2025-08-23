@@ -9,9 +9,7 @@ import Link from "next/link";
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cartReducer.items);
-  console.log(cartItems);
   
-
   return (
     <>
       {/* <!-- ===== Breadcrumb Section Start ===== --> */}

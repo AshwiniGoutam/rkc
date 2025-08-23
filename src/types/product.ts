@@ -1,15 +1,19 @@
 export type Product = {
-  image_url: string;
-  mrp: string;
+  _id: string;   // <-- was number, should be string
   name: string;
-  title: string;
   description: string;
-  reviews: number;
+  mrp: number;
   price: number;
-  discountedPrice: number;
-  id: number;
-  imgs?: {
-    thumbnails: string[];
-    previews: string[];
-  };
+  inStock: boolean | string;
+  image_url: string;
+  createdAt: string;
+};
+
+export type CartItem = {
+  _id: string;   // <-- also should be string
+  name: string;
+  price: number;
+  mrp?: number;
+  image_url: string;
+  quantity: number;
 };
