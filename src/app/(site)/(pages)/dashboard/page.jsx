@@ -3,21 +3,20 @@ import useSWR from "swr";
 import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import axios from "axios";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function DashboardPage() {
-  const {
-    data: products,
-    error,
-    isLoading,
-    mutate,
-  } = useSWR("/api/products", fetcher, { refreshInterval: 5000 });
+  const { data: products, error, isLoading, mutate } = useSWR(
+    "/api/products",
+    fetcher
+  );
 
   if (isLoading) return <p className="p-6">Loading...</p>;
   if (error) return <p className="p-6 text-red-500">Failed to load products</p>;
 
-  // ✅ Handle Delete
+  // ✅ Handle Delete with axios
   const handleDelete = async (id) => {
     const confirm = await Swal.fire({
       title: "Are you sure?",
@@ -31,16 +30,12 @@ export default function DashboardPage() {
 
     if (confirm.isConfirmed) {
       try {
-        const res = await fetch(`/api/products/${id}`, { method: "DELETE" });
+        await axios.delete(`/api/products/${id}`);
 
-        if (res.ok) {
-          Swal.fire("Deleted!", "Product has been removed.", "success");
-          mutate(); // 🔄 refresh product list
-        } else {
-          Swal.fire("Error!", "Failed to delete product.", "error");
-        }
+        Swal.fire("Deleted!", "Product has been removed.", "success");
+        mutate(); // 🔄 refresh list
       } catch (error) {
-        Swal.fire("Error!", "Something went wrong.", "error");
+        Swal.fire("Error!", "Failed to delete product.", "error");
       }
     }
   };
@@ -66,14 +61,15 @@ export default function DashboardPage() {
               <tr>
                 <th className="p-4">Image</th>
                 <th className="p-4">Product</th>
+                <th className="p-4">MRP</th>
                 <th className="p-4">Price</th>
                 <th className="p-4">Stock</th>
-                <th className="p-4 text-right">Actions</th>
+                <th className="p-4 text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {products &&
-                products?.map((item) => (
+                products.map((item) => (
                   <tr
                     key={item._id}
                     className="border-b last:border-none hover:bg-gray-50 border-gray"
@@ -87,9 +83,11 @@ export default function DashboardPage() {
                     </td>
                     <td className="p-4">
                       <p className="font-medium text-gray-800">{item.name}</p>
-                      {/* <p className="text-gray-500 text-sm">{item.description}</p> */}
                     </td>
                     <td className="p-4 font-semibold text-gray-700">
+                      ₹{item.mrp || '650'}
+                    </td>
+                      <td className="p-4 font-semibold text-gray-700">
                       ₹{item.price}
                     </td>
                     <td className="p-4">
@@ -103,16 +101,7 @@ export default function DashboardPage() {
                         {item.inStock ? "In Stock" : "Out of Stock"}
                       </span>
                     </td>
-                    <td className="p-4 text-right space-x-2">
-                      {/* ✅ Edit (navigate to edit page with ID) */}
-                      {/* <Link
-                      href={`/edit-product/${item._id}`}
-                      className="inline-flex items-center px-3 py-1.5 text-sm bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200"
-                    >
-                      <Pencil size={16} className="mr-1" /> Edit
-                    </Link> */}
-
-                      {/* ✅ Delete (with swal confirm) */}
+                    <td className="p-4 text-center space-x-2">
                       <button
                         onClick={() => handleDelete(item._id)}
                         className="inline-flex items-center px-3 py-1.5 text-sm bg-red-100 text-red-600 rounded-lg hover:bg-red-200"
@@ -125,7 +114,7 @@ export default function DashboardPage() {
             </tbody>
           </table>
 
-          {products.length === 0 && (
+          {products?.length === 0 && (
             <div className="p-6 text-center text-gray-500">
               No products found.
             </div>

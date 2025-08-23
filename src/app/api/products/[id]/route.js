@@ -23,6 +23,7 @@ export async function PUT(req, { params }) {
         $set: {
           name: body.name,
           price: Number(body.price),
+          mrp: Number(body.mrp),
           description: body.description,
           inStock: body.inStock === true || body.inStock === "true",
           image_url: body.imageUrl, // keep consistent field naming

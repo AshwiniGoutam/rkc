@@ -6,6 +6,7 @@ export default function Page() {
     productImage: null,
     productTitle: "Cotton_60_60 || Cotset",
     price: "525",
+    mrp: "650",
     description:
       "Full interlock, Pent pocket, Limeted stock, Order for available, Radhe Krishna Creation jaipuri",
     inStock: "true",
@@ -39,14 +40,18 @@ export default function Page() {
   };
 
   const handleSubmit = async (e) => {
+    console.log(formData);
+    
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoader(true);
 
+    console.log(process.env.MONGODB_URI);
     const data = new FormData();
     data.append("productImage", formData.productImage);
     data.append("name", formData.productTitle);
+    data.append("mrp", formData.mrp);
     data.append("price", formData.price);
     data.append("description", formData.description);
     data.append("inStock", formData.inStock);
@@ -61,10 +66,11 @@ export default function Page() {
         setSuccess(true);
         setFormData({
           productImage: null,
-          productTitle: "",
-          price: "",
-          description: "",
-          inStock: "true",
+          productImage: "",
+          // productTitle: "",
+          // price: "",
+          // description: "",
+          // inStock: "true",
         });
       } else {
         alert("❌ Failed to add product");
@@ -135,22 +141,40 @@ export default function Page() {
             </div>
 
             {/* Price */}
-            <div className="mb-5">
-              <label htmlFor="price" className="block mb-2.5">
-                Price <span className="text-red">*</span>
-              </label>
-              <input
-                type="number"
-                name="price"
-                id="price"
-                value={formData.price}
-                onChange={handleChange}
-                placeholder="Enter product price"
-                className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none"
-              />
-              {errors.price && (
-                <p className="text-red text-sm">{errors.price}</p>
-              )}
+            <div className="flex gap-5 mb-5 flex-col sm:flex-row">
+              <div className="w-full">
+                <label htmlFor="mrp" className="block mb-2.5">
+                  MRP <span className="text-red">*</span>
+                </label>
+                <input
+                  type="number"
+                  name="mrp"
+                  id="mrp"
+                  value={formData.mrp}
+                  onChange={handleChange}
+                  placeholder="Enter product MRP"
+                  className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none"
+                />
+                {errors.mrp && <p className="text-red text-sm">{errors.mrp}</p>}
+              </div>
+
+              <div className="w-full">
+                <label htmlFor="price" className="block mb-2.5">
+                  Price <span className="text-red">*</span>
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  id="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  placeholder="Enter product price"
+                  className="rounded-md border border-gray-3 bg-gray-1 placeholder:text-dark-5 w-full py-2.5 px-5 outline-none"
+                />
+                {errors.price && (
+                  <p className="text-red text-sm">{errors.price}</p>
+                )}
+              </div>
             </div>
 
             {/* Description */}

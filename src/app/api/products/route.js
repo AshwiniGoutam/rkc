@@ -27,6 +27,7 @@ export async function POST(req) {
     const formData = await req.formData();
     const name = formData.get("name");
     const price = formData.get("price");
+    const mrp = formData.get("mrp");
     const inStock = formData.get("inStock");
     const description = formData.get("description");
     const imageFile = formData.get("productImage");
@@ -55,7 +56,8 @@ export async function POST(req) {
     const newProduct = {
       name,
       description,
-      price: Number(price),
+      mrp: Number(price),
+      price: Number(mrp),
       inStock: inStock,
       image_url: imageUrl,
       createdAt: new Date(),
