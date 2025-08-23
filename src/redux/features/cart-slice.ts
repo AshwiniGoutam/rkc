@@ -6,7 +6,7 @@ type InitialState = {
 };
 
 type CartItem = {
-  _id: string;   // 👈 change to string
+  _id: string; // 👈 change to string
   name: string;
   description: string;
   price: number;
@@ -14,7 +14,6 @@ type CartItem = {
   quantity: number;
   image_url?: string; // 👈 looks like your Product has `image_url: string`, not object
 };
-
 
 const initialState: InitialState = {
   items: [],
@@ -43,13 +42,14 @@ export const cart = createSlice({
         });
       }
     },
-    removeItemFromCart: (state, action: PayloadAction<number>) => {
+    removeItemFromCart: (state, action: PayloadAction<string>) => {
       const itemId = action.payload;
       state.items = state.items.filter((item) => item._id !== itemId);
     },
+
     updateCartItemQuantity: (
       state,
-      action: PayloadAction<{ _id: number; quantity: number }>
+      action: PayloadAction<{ _id: string; quantity: number }>
     ) => {
       const { _id, quantity } = action.payload;
       const existingItem = state.items.find((item) => item._id === _id);
