@@ -31,7 +31,7 @@ const ProductItem = ({ item }: { item: Product }) => {
         quantity: 1,
       })
     );
-    openCartModal()
+    openCartModal();
   };
 
   const handleItemToWishList = () => {
@@ -39,7 +39,6 @@ const ProductItem = ({ item }: { item: Product }) => {
       addItemToWishlist({
         ...item,
         status: "available",
-        quantity: 1,
       })
     );
   };
@@ -53,11 +52,11 @@ const ProductItem = ({ item }: { item: Product }) => {
       <div className="relative overflow-hidden flex items-center justify-center rounded-lg bg-[#F6F7FB] min-h-[270px] mb-4">
         {/* <Image src={item.imgs.previews[0]} alt="" width={250} height={250} /> */}
         <img
-          src={item.imgs.previews[0]}
+          src={item.image_url}
           alt=""
-          width={250}
-          height={250}
-          style={{ height: "350px", objectFit: "cover" }}
+          width={350}
+          height={150}
+          style={{height: "280px", objectFit: "cover" }}
         />
 
         <div className="absolute left-0 bottom-0 translate-y-full w-full flex items-center justify-center gap-2.5 pb-5 ease-linear duration-200 group-hover:translate-y-0">
@@ -159,19 +158,19 @@ const ProductItem = ({ item }: { item: Product }) => {
           />
         </div>
 
-        <p className="text-custom-sm">({item.reviews})</p>
+        {/* <p className="text-custom-sm">({item.reviews})</p> */}
       </div>
 
       <h3
         className="font-medium text-dark ease-out duration-200 hover:text-blue mb-1.5"
         onClick={() => handleProductDetails()}
       >
-        <Link href="/shop-details"> {item.title} </Link>
+        <Link href="/shop-details"> {item.name} </Link>
       </h3>
 
       <span className="flex items-center gap-2 font-medium text-lg">
         <span className="text-dark">${item.price}</span>
-        {/* <span className="text-dark-4 line-through">${item.price}</span> */}
+        <span className="text-dark-4 line-through">${item.mrp || "650"}</span>
       </span>
     </div>
   );

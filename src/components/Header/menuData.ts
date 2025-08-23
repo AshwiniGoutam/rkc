@@ -7,12 +7,12 @@ export const menuData: Menu[] = [
     newTab: false,
     path: "/",
   },
-  {
-    id: 2,
-    title: "Shop",
-    newTab: false,
-    path: "/shop-with-sidebar",
-  },
+  // {
+  //   id: 2,
+  //   title: "Shop",
+  //   newTab: false,
+  //   path: "/shop-with-sidebar",
+  // },
   {
     id: 3,
     title: "Contact",

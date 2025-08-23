@@ -19,6 +19,8 @@ const QuickViewModal = () => {
 
   // get the product data
   const product = useAppSelector((state) => state.quickViewReducer.value);
+  console.log(product);
+  
 
   const [activePreview, setActivePreview] = useState(0);
 
@@ -93,7 +95,7 @@ const QuickViewModal = () => {
           <div className="flex flex-wrap items-center gap-12.5">
             <div className="max-w-[526px] w-full">
               <div className="flex gap-5">
-                <div className="flex flex-col gap-5">
+                {/* <div className="flex flex-col gap-5">
                   {product.imgs.thumbnails?.map((img, key) => (
                     <button
                       onClick={() => setActivePreview(key)}
@@ -111,11 +113,11 @@ const QuickViewModal = () => {
                       />
                     </button>
                   ))}
-                </div>
+                </div> */}
 
                 <div className="relative z-1 overflow-hidden flex items-center justify-center w-full sm:min-h-[508px] bg-gray-1 rounded-lg border border-gray-3">
                   <div>
-                    <button
+                    {/* <button
                       onClick={handlePreviewSlider}
                       aria-label="button for zoom"
                       className="gallery__Image w-10 h-10 rounded-[5px] bg-white shadow-1 flex items-center justify-center ease-out duration-200 text-dark hover:text-blue absolute top-4 lg:top-8 right-4 lg:right-8 z-50"
@@ -135,10 +137,10 @@ const QuickViewModal = () => {
                           fill=""
                         />
                       </svg>
-                    </button>
+                    </button> */}
 
-                    <Image
-                      src={product?.imgs?.previews?.[activePreview]}
+                    <img
+                      src={product?.image_url}
                       alt="products-details"
                       width={400}
                       height={400}
@@ -150,11 +152,11 @@ const QuickViewModal = () => {
 
             <div className="max-w-[445px] w-full">
               <span className="inline-block text-custom-xs font-medium text-white py-1 px-3 bg-green mb-6.5">
-                SALE 10% OFF
+                SALE 20% OFF
               </span>
 
               <h3 className="font-semibold text-xl xl:text-heading-5 text-dark mb-4">
-                {product.title}
+                {product.name}
               </h3>
 
               <div className="flex flex-wrap items-center gap-5 mb-6">
@@ -302,9 +304,7 @@ const QuickViewModal = () => {
                 </div>
               </div>
 
-              <p>
-                {product.description}
-              </p>
+              <p>{product.description}</p>
 
               <div className="flex flex-wrap justify-between gap-5 mt-6 mb-7.5">
                 <div>
@@ -317,7 +317,7 @@ const QuickViewModal = () => {
                       ${product.price}
                     </span>
                     <span className="font-medium text-dark-4 text-lg xl:text-2xl line-through">
-                      ${product.discountedPrice}
+                      ${product.mrp || '650'}
                     </span>
                   </span>
                 </div>
