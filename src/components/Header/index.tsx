@@ -47,6 +47,17 @@ const Header = () => {
     { label: "----", value: "7" },
   ];
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   return (
     <header
       className={`fixed left-0 top-0 w-full z-9999 bg-white transition-all ease-in-out duration-300 ${
@@ -69,7 +80,7 @@ const Header = () => {
                 width={219}
                 height={36}
               />
-               {/* <h1 style={{ fontSize: '40px', fontWeight: '700', color: '#000' }} >RKC</h1> */}
+              {/* <h1 style={{ fontSize: '40px', fontWeight: '700', color: '#000' }} >RKC</h1> */}
             </Link>
 
             <div className="max-w-[475px] w-full">
@@ -158,7 +169,10 @@ const Header = () => {
 
             <div className="flex w-full lg:w-auto justify-between items-center gap-5">
               <div className="flex items-center gap-5">
-                {/* <Link href="/signin" className="flex items-center gap-2.5">
+                <Link
+                  href={localStorage.getItem("user") ? "/" : "/signin"}
+                  className="flex items-center gap-2.5"
+                >
                   <svg
                     width="24"
                     height="24"
@@ -180,15 +194,21 @@ const Header = () => {
                     />
                   </svg>
 
-                  <div>
-                    <span className="block text-2xs text-dark-4 uppercase">
-                      account
-                    </span>
-                    <p className="font-medium text-custom-sm text-dark">
-                      Sign In
-                    </p>
-                  </div>
-                </Link> */}
+                  {localStorage.getItem("user") ? (
+                    <div>
+                      <h2>{localStorage.getItem("user")}</h2>
+                    </div>
+                  ) : (
+                    <div>
+                      <span className="block text-2xs text-dark-4 uppercase">
+                        account
+                      </span>
+                      <p className="font-medium text-custom-sm text-dark">
+                        Sign In
+                      </p>
+                    </div>
+                  )}
+                </Link>
 
                 <button
                   onClick={handleOpenCartModal}
@@ -322,6 +342,20 @@ const Header = () => {
                         </Link>
                       </li>
                     )
+                  )}
+
+                  {/* 👇 Add My Orders only if logged in */}
+                  {isLoggedIn && (
+                    <li className="group relative before:w-0 before:h-[3px] before:bg-blue before:absolute before:left-0 before:top-0 before:rounded-b-[3px] before:ease-out before:duration-200 hover:before:w-full ">
+                      <Link
+                        href="/my-orders"
+                        className={`hover:text-blue text-custom-sm font-medium text-dark flex ${
+                          stickyMenu ? "xl:py-4" : "xl:py-6"
+                        }`}
+                      >
+                        My Orders
+                      </Link>
+                    </li>
                   )}
                 </ul>
               </nav>
