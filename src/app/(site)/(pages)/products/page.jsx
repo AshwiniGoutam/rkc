@@ -4,10 +4,19 @@ import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function DashboardPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/signin");
+    }
+  }, []);
   const { data: products, error, isLoading, mutate } = useSWR(
     "/api/products",
     fetcher
@@ -87,16 +96,15 @@ export default function DashboardPage() {
                     <td className="p-4 font-semibold text-gray-700">
                       ₹{item.mrp || '650'}
                     </td>
-                      <td className="p-4 font-semibold text-gray-700">
+                    <td className="p-4 font-semibold text-gray-700">
                       ₹{item.price}
                     </td>
                     <td className="p-4">
                       <span
-                        className={`px-2 py-1 text-xs rounded ${
-                          item.inStock
-                            ? "bg-green-100 text-green-700"
-                            : "bg-red-100 text-red-700"
-                        }`}
+                        className={`px-2 py-1 text-xs rounded ${item.inStock
+                          ? "bg-green-100 text-green-700"
+                          : "bg-red-100 text-red-700"
+                          }`}
                       >
                         {item.inStock ? "In Stock" : "Out of Stock"}
                       </span>

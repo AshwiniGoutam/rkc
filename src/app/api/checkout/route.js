@@ -53,23 +53,44 @@ export async function GET(req) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // verify user
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // Verify JWT
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET);
+    } catch (err) {
+      console.error("JWT verification failed:", err.message);
+      return NextResponse.json({ error: "Invalid token" }, { status: 403 });
+    }
+
+    console.log("Decoded token:", decoded);
 
     const client = await clientPromise;
     const db = client.db("rkc");
 
-    // find orders only for this user
-    const orders = await db
-      .collection("orders")
-      .find({ email: decoded.email }) // or use userId if stored
-      .toArray();
+    let orders;
+
+    // ✅ Check username from JWT instead of localStorage
+    if (decoded.username === "admin") {
+      console.log("Admin detected → fetching all orders");
+      orders = await db
+        .collection("orders")
+        .find({})
+        .sort({ createdAt: -1 }) // newest → oldest
+        .toArray();
+    } else {
+      console.log("Normal user:", decoded.username || decoded.email);
+      orders = await db
+        .collection("orders")
+        .find({ username: decoded.username })
+        .sort({ createdAt: -1 }) // newest → oldest
+        .toArray();
+    }
 
     return NextResponse.json({ orders });
   } catch (err) {
-    console.error(err);
+    console.error("API Error:", err);
     return NextResponse.json(
-      { error: "Something went wrong" },
+      { error: "Something went wrong", details: err.message },
       { status: 500 }
     );
   }

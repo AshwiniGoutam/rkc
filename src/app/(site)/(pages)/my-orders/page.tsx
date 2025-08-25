@@ -1,6 +1,7 @@
 "use client";
 
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 interface Product {
@@ -58,6 +59,14 @@ const getStatusInfo = (status: string) => {
 };
 
 const MyOrders: React.FC = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/signin");
+    }
+  }, []);
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"current" | "unpaid" | "all">(
